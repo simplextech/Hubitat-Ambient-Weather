@@ -53,10 +53,8 @@ def page3() {
 def installed() {
     log.debug("Installed");
     
-    addDevice();
-    
-    initialize();
-    
+    addDevice();    
+    initialize();    
     runEvery5Minutes(fetchNewWeather);
 }
 
@@ -123,6 +121,33 @@ def fetchNewWeather() {
     
     log.debug("Weather: " + weather);
     
-    childDevices[0].setTemperature(weather.tempf);
+    // childDevices[0].setTemperature(weather.tempf);
+    // childDevices[0].setHumidity(weather.humidity);
+
+    //
+    // Simplex Technology
+    //
+    childDevices[0].setBaromabsin(weather.baromabsin);
+    childDevices[0].setBaromrelin(weather.baromrelin);
+    childDevices[0].setDailyrainin(weather.dailyrainin);
+    // Need to normalize date
+    //childDevices[0].setDate(weather.date);    
+    childDevices[0].setDewPoint(weather.dewPoint);
+    childDevices[0].setFeelsLike(weather.feelsLike);
+    childDevices[0].setHourlyrainin(weather.hourlyrainin);
     childDevices[0].setHumidity(weather.humidity);
+    childDevices[0].setHumidityin(weather.humidityin);
+    // Need to normalize the date
+    //childDevices[0].setLastRain(weather.lastRain);    
+    childDevices[0].setMaxdailygust(weather.maxdailygust);
+    childDevices[0].setMonthlyrainin(weather.monthlyrainin);
+    childDevices[0].setSolarradiation(weather.solarradiation);
+    childDevices[0].setTemperature(weather.tempf);
+    childDevices[0].setTempinf(weather.tempinf);
+    childDevices[0].setTotalrainin(weather.totalrainin);
+    childDevices[0].setUV(weather.uv);
+    childDevices[0].setWeeklyrainin(weather.weeklyrainin);
+    childDevices[0].setWinddir(weather.winddir);
+    childDevices[0].setWindgustmph(weather.windgustmph);
+    childDevices[0].setWindspeedmph(weather.windspeedmph);
 }
