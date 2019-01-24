@@ -1,10 +1,11 @@
 metadata {
     definition(name: "Ambient Weather Tile", namespace: "CordMaster", author: "Alden Howard") {
         capability "Sensor"
-        capability "Temperature Measurement"
-        capability "Relative Humidity Measurement"
-        capability "Illuminance Measurement"
-
+        capability "TemperatureMeasurement"
+        capability "RelativeHumidityMeasurement"
+        capability "IlluminanceMeasurement"
+        capability "PressureMeasurement"
+        capability "UltravioletIndex"
         capability "Refresh"
         
         //command "setTemperature", ["number"]
@@ -15,27 +16,27 @@ metadata {
         //
         // Currently no metric conversions have been added.
         //
-        attribute "Abs Barometric Pressure", "number"
-        attribute "Rel Barometric Pressure", "number"
-        attribute "Daily Rain", "number"
+        attribute "absBarometricPressure", "number"
+        attribute "relBarometricPressure", "number"
+        attribute "dailyRain", "number"
         //attribute "setDate", "string"
-        attribute "Dew Point", "number"
-        attribute "Feels Like", "number"
-        attribute "Hourly Rain", "number"
-        attribute "Humidity", "number"
-        attribute "HumidityIn", "number"
+        attribute "dewPoint", "number"
+        attribute "feelsLike", "number"
+        attribute "hourlyRain", "number"
+        attribute "humidity", "number"
+        attribute "humidityIn", "number"
         //attribute "Last Rain", "string"
-        attribute "Max Daily Gust", "number"
-        attribute "Monthly Rain", "number"
-        attribute "Solar Radiation", "number"
-        attribute "Temperature", "number"
-        attribute "TemperatureIn", "number"
-        attribute "Total Rain", "number"
-        attribute "UV Index", "number"
-        attribute "Weekly Rain", "number"
-        attribute "Wind Direction", "number" //Conversion from number direction to cardinal needs to be added
-        attribute "Wind Gust MPH", "number"
-        attribute "Wind Speed MPH", "number"    
+        attribute "maxDailyGust", "number"
+        attribute "monthlyRain", "number"
+        attribute "solarRadiation", "number"
+        attribute "temperature", "number"
+        attribute "temperatureIn", "number"
+        attribute "totalRain", "number"
+        attribute "uvIndex", "number"
+        attribute "weeklyRain", "number"
+        attribute "windDirection", "number" //Conversion from number direction to cardinal needs to be added
+        attribute "windGustMPH", "number"
+        attribute "windSpeedMPH", "number"    
     }
     
     //needed?
@@ -59,15 +60,15 @@ def refresh() {
 //Simplex Technology
 //
 def setBaromabsin(value) {
-    sendEvent(name: "Abs Barometric Pressure", value: value)
+    sendEvent(name: "absBarometricPressure", value: value)
 }
 
 def setBaromrelin(value) {
-    sendEvent(name: "Rel Barometric Pressure", value: value)
+    sendEvent(name: "relBarometricPressure", value: value)
 }
 
 def setDailyrainin(value) {
-    sendEvent(name: "Daily Rain", value: value)
+    sendEvent(name: "dailyRain", value: value)
 }
 
 // Need to normalize the date
@@ -76,23 +77,23 @@ def setDailyrainin(value) {
 // }
 
 def setDewPoint(value) {
-    sendEvent(name: "Dew Point", value: value)
+    sendEvent(name: "dewPoint", value: value)
 }
 
 def setFeelsLike(value) {
-    sendEvent(name: "Feels Like", value: value)
+    sendEvent(name: "feelsLike", value: value)
 }
 
 def setHourlyrainin(value) {
-    sendEvent(name: "Hourly Rain", value: value)
+    sendEvent(name: "hourlyRain", value: value)
 }
 
 def setHumidityin(value) {
-    sendEvent(name: "HumidityIn", value: value)
+    sendEvent(name: "humidityIn", value: value)
 }
 
 def setHumidity(value) {
-    sendEvent(name: "Humidity", value: value)
+    sendEvent(name: "humidity", value: value)
 }
 
 // Need to normalize the date
@@ -101,45 +102,45 @@ def setHumidity(value) {
 // }
 
 def setMaxdailygust(value) {
-    sendEvent(name: "Max Daily Gust", value: value)
+    sendEvent(name: "maxDailyGust", value: value)
 }
 
 def setMonthlyrainin(value) {
-    sendEvent(name: "Monthly Rain", value: value)
+    sendEvent(name: "monthlyRain", value: value)
 }
 
 def setSolarradiation(value) {
-    sendEvent(name: "Solar Radiation", value: value)
+    sendEvent(name: "solarRadiation", value: value)
 }
 
 def setTemperature(value) {
-    sendEvent(name: "Temperature", value: value, unit: '°F')
+    sendEvent(name: "temperature", value: value, unit: '°F')
 }
 
 def setTempinf(value) {
-    sendEvent(name: "TemperatureIn", value: value, unit: '°F')
+    sendEvent(name: "temperatureIn", value: value, unit: '°F')
 }
 
 def setTotalrainin(value) {
-    sendEvent(name: "Total Rain", value: value)
+    sendEvent(name: "totalRain", value: value)
 }
 
 def setUV(value) {
-    sendEvent(name: "UV Index", value: value)
+    sendEvent(name: "uvIndex", value: value)
 }
 
 def setWeeklyrainin(value) {
-    sendEvent(name: "Weekly Rain", value: value)
+    sendEvent(name: "weeklyRain", value: value)
 }
 
 def setWinddir(value) {
-    sendEvent(name: "Wind Direction", value: value)
+    sendEvent(name: "windDirection", value: value)
 }
 
 def setWindgustmph(value) {
-    sendEvent(name: "Wind Gust MPH", value: value)
+    sendEvent(name: "windGustMPH", value: value)
 }
 
 def setWindspeedmph(value) {
-    sendEvent(name: "Wind Speed MPH", value: value)
+    sendEvent(name: "windSpeedMPH", value: value)
 }
